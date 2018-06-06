@@ -1,0 +1,45 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+<div style="text-align:center">
+
+
+
+
+<div *ngFor="let task of tasks"> <p>{{task.title}}</p>
+	<button (click)="editTask(task)">Edit</button>
+	<button (click)="deleteTask(task)">Delete</button> 
+	<hr>
+</div>
+   
+
+<input #taskId type="text" name="task_id" placeholder="Enter task id here">
+<button (click)="getTaskById(taskId.value)">Click me!</button>
+
+<p>{{task.title}}</p>
+
+<form (submit)="onSubmit()">
+    <!-- use the json pipe to see how newTask changes in real time -->
+    <input type="text" name="newTask.title" [(ngModel)]="newTask.title" />
+    <input type="submit" value="Create Task" />
+</form>
+
+<div *ngFor="let error of errors">
+	<p>{{error}}</p>
+</div>
+
+<div *ngIf="showEdit">
+	<form (submit)="saveTask()">
+    <!-- use the json pipe to see how newTask changes in real time -->
+    <input type="text" name="task.title" [(ngModel)]="task.title" />
+    <input type="submit" value="Save Task" />
+</form>
+</div>
+</div>
+</body>
+</html>
+
